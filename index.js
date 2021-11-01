@@ -5,10 +5,13 @@ const logger = require("morgan");
 const { connect } = require("./config/database");
 const HTTPSTATUSCODE = require("./utils/httpStatusCode");
 const movie = require("./app/api/routes/movie.route");
+const user = require("./app/api/routes/user.route");
 
 connect();
 
 const app = express();
+
+app.set("secretKey", "nodeRestApi");
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -28,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
 app.use("/movie", movie);
+app.use("/user", user);
 
 app.use((req, res, next) => {
     let err = new Error();
