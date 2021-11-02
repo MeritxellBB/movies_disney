@@ -6,6 +6,7 @@ const { connect } = require("./config/database");
 const HTTPSTATUSCODE = require("./utils/httpStatusCode");
 const movie = require("./app/api/routes/movie.route");
 const user = require("./app/api/routes/user.route");
+const award = require("./app/api/routes/award.route");
 
 connect();
 
@@ -32,6 +33,7 @@ app.use(logger("dev"));
 
 app.use("/movie", movie);
 app.use("/user", user);
+app.use("/award", award);
 
 app.use((req, res, next) => {
     let err = new Error();

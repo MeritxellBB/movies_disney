@@ -29,7 +29,7 @@ const getAllMovie = async (req, res, next) => {
             return res.json({
                 status: 200,
                 message: HTTPSTATUSCODE[200],
-                data: { movie: movie }
+                data: { movie: m }
             });
         } else {
             const movie = await Movie.find();
